@@ -10,7 +10,7 @@ class Formation extends Pratique{
 	protected $programme;
 	protected $competences;
 
-	function __construct($id = 1, $nom = "dwwm 2", $programme = "Au secours", $competences = "Pour faire quoi ?"){
+	function __construct( $nom, $id = 1, $programme = "Au secours", $competences = "Pour faire quoi ?"){
 		$this->id = $id;
 		$this->nom = $nom;
 		$this->programme = $programme;
