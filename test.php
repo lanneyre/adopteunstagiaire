@@ -1,11 +1,26 @@
 <?php 
-include("include.php");
+include_once("include.php");
+
+$form = new Formation(15, "dwwm 2", "plein d'hémoglobine", "pleins");
+
+echo '$form->id = '.$form->id.'<br>';
+echo '$form->nom = '.$form->nom.'<br>';
+echo '$form->programme = '.$form->programme.'<br>';
+echo '$form->competences = '.$form->competences.'<br>';
 
 $form = new Formation();
 
 echo '$form->id = '.$form->id.'<br>';
-$form->id = 42;
+echo '$form->nom = '.$form->nom.'<br>';
+echo '$form->programme = '.$form->programme.'<br>';
+echo '$form->competences = '.$form->competences.'<br>';
+
+$form = new Formation( 424242, "test");
+
 echo '$form->id = '.$form->id.'<br>';
+echo '$form->nom = '.$form->nom.'<br>';
+echo '$form->programme = '.$form->programme.'<br>';
+echo '$form->competences = '.$form->competences.'<br>';
 
 echo '<hr>';
 
