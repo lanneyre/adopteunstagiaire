@@ -3,6 +3,8 @@ require ("class/Pratique.php");
 require ("class/Formation.php");
 require ("class/Stage.php");
 require ("class/Utilisateur.php");
+require ("class/Stagiaire.php");
+require ("class/Entreprise.php");
 
 $form = new Formation();
 
@@ -29,3 +31,19 @@ echo '$user->mail = '.$user->mail.'<br>';
 echo '$user->mdp = '.$user->mdp.'<br>';
 $user->encryptMdp("test");
 echo '$user->mdp = '.$user->mdp.'<br>';
+
+echo '<hr>';
+
+$stagiaire = new Stagiaire();
+
+echo '$stagiaire->nom = '.$stagiaire->nom.'<br>';
+$stagiaire->nom = "LANNEY";
+echo '$stagiaire->nom = '.$stagiaire->nom.'<br>';
+
+echo '<hr>';
+
+$entreprise = new Entreprise();
+
+echo '$entreprise->raisonSociale = '.$entreprise->raisonSociale.'<br>';
+$entreprise->raisonSociale = "ICS";
+echo '$entreprise->raisonSociale = '.$entreprise->raisonSociale.'<br>';
