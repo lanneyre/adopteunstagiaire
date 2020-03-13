@@ -44,6 +44,6 @@ echo '<hr>';
 
 $entreprise = new Entreprise();
 
-echo '$entreprise->raisonSociale = '.$entreprise->raisonSociale.'<br>';
-$entreprise->raisonSociale = "ICS";
-echo '$entreprise->raisonSociale = '.$entreprise->raisonSociale.'<br>';
+echo '$entreprise->id = '.$entreprise->id.'<br>';
+$entreprise->id = "ICS";
+echo '$entreprise->id = '.$entreprise->id.'<br>';

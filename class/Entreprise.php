@@ -2,19 +2,19 @@
 /**
  * 
  */
-class Entreprise
+class Entreprise extends Utilisateur
 {
-	private $raisonSociale;
-	private $adresse;
-	private $CP;
-	private $ville;
-	private $siret;
+	protected $raisonSociale;
+	protected $adresse;
+	protected $CP;
+	protected $ville;
+	protected $siret;
 
-	public function __get($attribut){
-		return $this->$attribut;
-	}
+	// public function __get($attribut){
+	// 	return $this->$attribut;
+	// }
 
-	public function __set($attribut, $valeur){
-		$this->$attribut = $valeur;
-	}
+	// public function __set($attribut, $valeur){
+	// 	$this->$attribut = $valeur;
+	// }
 }
