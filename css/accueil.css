@@ -1,0 +1,281 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Geometria";
+    font-size: 22px;
+    color: rgba(160, 156, 156, 0.952);
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    font-family: "Geometria";
+    color: rgba(160, 156, 156, 0.952);
+}
+
+a {
+    font-size: 18px;
+    text-decoration: none;
+    font-family: "Geometria";
+    color: rgba(160, 156, 156, 0.952);
+}
+
+li {
+    font-family: "Geometria";
+}
+
+header {
+
+    display: flex;
+    width: 100%;
+    margin: auto;
+    background-color: #5f3263;
+}
+
+#logo {
+    width: 15%;
+
+}
+
+#logo img {
+    width: 100%;
+    margin-left: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+
+}
+
+.login {
+    list-style: none;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.nav_categorie {
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    min-height: 8vh;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.nav_categorie a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+
+}
+
+.burger {
+    display: none;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(226, 226, 226);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav_categorie li {
+    list-style: none;
+    margin: auto;
+}
+
+#content-header-right {
+    display: flex;
+    justify-content: space-around;
+    width: 77%;
+    margin: auto 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.952);
+    font-style: italic;
+
+}
+
+.content-header-right-nav {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 45%;
+}
+
+.content-header-right-nav a {
+    text-align: center;
+    margin: auto;
+    padding-left: 20%;
+}
+
+.contentTop {
+    width: 100%;
+    margin: auto;
+    margin-top: 10%;
+    display: flex;
+}
+
+.contentLeft {
+    width: 45%;
+}
+
+.contentLeft img {
+    width: 100%;
+}
+
+.contentRight {
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 55%;
+    padding: 2%;
+}
+
+.contentRight h3 {
+    margin-bottom: 5%;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10.9%;
+}
+
+.card {
+    border: 1px solid #5f3263;
+    margin: 2%;
+    width: 12rem;
+    padding: 10px;
+    background-color: rgb(216, 216, 216);
+    border-radius: 1%
+}
+
+.card-img-top {
+    width: 100%;
+    margin: auto;
+}
+
+.card:hover {
+    box-shadow: 2px 4px 8px rgb(70, 68, 68);
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.card-body {
+    text-align: center;
+
+}
+
+.card-text {
+    color: white;
+}
+
+.apprenantsContent {
+    margin-top: 10%;
+}
+
+.apprenantsContent h3 {
+    margin-bottom: 5%;
+}
+
+.formulaire {
+    margin-top: 10%;
+}
+form {
+    
+    width: 90%;
+    margin: auto;
+}
+
+.formModal{
+    margin: auto;
+}
+
+.formTop,.formBottom{
+    text-align: center;
+    display: flex;
+    padding: 5%;
+    justify-content: space-around;
+}
+
+.formCenter{
+    text-align: center;
+    width: 30%;
+    margin: auto;
+}
+
+.contentBtn {
+    width: 100%;
+}
+.btn {
+    background-color: #5f3263;
+    border: none;
+}
+
+.btn:hover{
+    background-color: rgb(69, 219, 94);
+}
+.btn-submit{
+    width: 70%;
+    margin-left: 15%;
+    height: 40px;
+    background-color: #5f3263;
+    color: white;
+    border-radius: 20px;
+}
+.form-group{
+    width: 30%;
+    margin: auto;
+}
+
+.formCenter .form-group {
+    width: 65%;
+    margin: auto;
+}
+.form-group-modal {
+    width: 100%;
+    text-align: center;
+}
+.form-group-midle{
+    width: 60%;
+}
+.form-control {
+   margin-left: 2%;
+    padding: 10px;
+text-align: center;
+border-radius: 20px;
+}
+
+.btn-modal {
+    width: 100%;
+}
+
+#exampleModalLabel {
+    margin-left: 39%;
+}
