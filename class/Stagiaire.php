@@ -6,6 +6,7 @@ class Stagiaire extends Utilisateur
 {
 	protected $nom;
 	protected $prenom;
+	protected $img;
 	protected $CV;
 	protected $statut;
 	protected $formation;
