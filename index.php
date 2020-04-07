@@ -1,3 +1,6 @@
+<?php 
+    require_once("include/bdd.php");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
