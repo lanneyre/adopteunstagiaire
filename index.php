@@ -42,7 +42,7 @@
                 </p>
             </div>
         </div>
-        <article class="apprenantsContent">
+        <article class="apprenantsContent" id="cardApprenants">
             <h3>Nos apprenants prêt à entrer en mission</h3>
             <div class="container">
                 <?php include("include/card.php") ?>

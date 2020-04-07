@@ -279,3 +279,6 @@ border-radius: 20px;
 #exampleModalLabel {
     margin-left: 39%;
 }
+.pagination{
+    justify-content: center;
+}
