@@ -2,8 +2,8 @@
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3307
--- Généré le : mar. 31 mars 2020 à 14:30
+-- Hôte : localhost:3306
+-- Généré le : mer. 08 avr. 2020 à 07:23
 -- Version du serveur :  10.5.1-MariaDB-log
 -- Version de PHP : 7.2.11
 
@@ -77,15 +77,23 @@ DROP TABLE IF EXISTS `entreprise`;
 CREATE TABLE IF NOT EXISTS `entreprise` (
   `entreprise_id` int(11) NOT NULL AUTO_INCREMENT,
   `entreprise_raisonSociale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `entreprise_adresse` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `entreprise_cp` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `entreprise_ville` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `entreprise_adresse` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `entreprise_cp` varchar(6) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `entreprise_ville` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `entreprise_siret` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `entreprise_caracteristiques` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `entreprise_caracteristiques` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `entreprise_utilisateur_id` int(11) NOT NULL,
   PRIMARY KEY (`entreprise_id`),
   KEY `entreprise_utilisateur_id` (`entreprise_utilisateur_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `entreprise`
+--
+
+INSERT INTO `entreprise` (`entreprise_id`, `entreprise_raisonSociale`, `entreprise_adresse`, `entreprise_cp`, `entreprise_ville`, `entreprise_siret`, `entreprise_caracteristiques`, `entreprise_utilisateur_id`) VALUES
+(2, 'Graine de fermier', NULL, NULL, NULL, '0123456789987', NULL, 1),
+(3, 'CCI', NULL, NULL, NULL, '9876543210123', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -101,7 +109,14 @@ CREATE TABLE IF NOT EXISTS `formateur` (
   `formateur_utilisateur_id` int(11) NOT NULL,
   PRIMARY KEY (`formateur_id`),
   KEY `formateur_utilisateur_id` (`formateur_utilisateur_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `formateur`
+--
+
+INSERT INTO `formateur` (`formateur_id`, `formateur_nom`, `formateur_prenom`, `formateur_utilisateur_id`) VALUES
+(1, 'LANNEY', 'Rémi', 3);
 
 -- --------------------------------------------------------
 
@@ -118,7 +133,14 @@ CREATE TABLE IF NOT EXISTS `formation` (
   `formation_typeformation_id` int(11) NOT NULL,
   PRIMARY KEY (`formation_id`),
   KEY `formation_typeformation_id` (`formation_typeformation_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `formation`
+--
+
+INSERT INTO `formation` (`formation_id`, `formation_nom`, `formation_dateDebut`, `formation_dateFin`, `formation_typeformation_id`) VALUES
+(1, 'DWWM2', '2020-04-07 14:57:07', '2020-04-07 14:57:07', 1);
 
 -- --------------------------------------------------------
 
@@ -133,6 +155,14 @@ CREATE TABLE IF NOT EXISTS `informer` (
   PRIMARY KEY (`formateur_id`,`entreprise_id`),
   KEY `informer_entreprise_id` (`entreprise_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `informer`
+--
+
+INSERT INTO `informer` (`formateur_id`, `entreprise_id`) VALUES
+(1, 2),
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -182,26 +212,26 @@ CREATE TABLE IF NOT EXISTS `stagiaire` (
 --
 
 INSERT INTO `stagiaire` (`stagiaire_id`, `stagiaire_nom`, `stagiaire_prenom`, `stagiaire_cv`, `stagiaire_statut`, `stagiaire_preferences`, `stagiaire_utilisateur_id`, `stagiaire_formation_id`) VALUES
-(1, 'Marie', 'BLANC', '', 0, 'Lorem Ipsum', NULL, NULL),
-(2, 'Benedicte', 'BOUI ', '', 0, 'Lorem Ipsum', NULL, NULL),
-(3, 'Soumaya', 'CANCOIN', '', 0, 'Lorem Ipsum', NULL, NULL),
-(4, 'Vincent', 'COCHET-HILGENBERG', '', 0, 'Lorem Ipsum', NULL, NULL),
-(5, 'Sabrina', 'DAOUD', '', 0, 'Lorem Ipsum', NULL, NULL),
-(6, 'Hugo', 'DEJEAN', '', 0, 'Lorem Ipsum', NULL, NULL),
-(7, 'Nagui', 'DELIQUAIRE', '', 0, 'Lorem Ipsum', NULL, NULL),
-(8, 'Fleur', 'DEVELEY', '', 0, 'Lorem Ipsum', NULL, NULL),
-(9, 'Anissa', 'EL HELALI', '', 0, 'Lorem Ipsum', NULL, NULL),
-(10, 'Jeremy', 'FILLIN ', '', 0, 'Lorem Ipsum', NULL, NULL),
-(11, 'Emmanuel', 'GARCIA', '', 0, 'Lorem Ipsum', NULL, NULL),
-(12, 'Corinne', 'HERVE ', '', 0, 'Lorem Ipsum', NULL, NULL),
-(13, 'Ahmed', 'KARA ', '', 0, 'Lorem Ipsum', NULL, NULL),
-(14, 'Franck', 'MARTINEZ', '', 0, 'Lorem Ipsum', NULL, NULL),
-(15, 'Audrey', 'MEDICI', '', 0, 'Lorem Ipsum', NULL, NULL),
-(16, 'Benjamin', 'MORIN', '', 0, 'Lorem Ipsum', NULL, NULL),
-(17, 'Lorry', 'NADER ', '', 0, 'Lorem Ipsum', NULL, NULL),
-(18, 'Nathalie', 'NOIRFALISE ', '', 0, 'Lorem Ipsum', NULL, NULL),
-(19, 'Nadeje', 'THOMASSET ', '', 0, 'Lorem Ipsum', NULL, NULL),
-(20, 'Axel', 'AVAD ', '', 0, 'Lorem Ipsum', NULL, NULL);
+(1, 'Marie', 'BLANC', '', 0, 'Lorem Ipsum', NULL, 1),
+(2, 'Benedicte', 'BOUY', '', 0, 'Lorem Ipsum', NULL, 1),
+(3, 'Soumaya', 'CANCOIN', '', 0, 'Lorem Ipsum', NULL, 1),
+(4, 'Vincent', 'COCHET-HILGENBERG', '', 0, 'Lorem Ipsum', NULL, 1),
+(5, 'Sabrina', 'DAOUD', '', 0, 'Lorem Ipsum', NULL, 1),
+(6, 'Hugo', 'DEJEAN', '', 0, 'Lorem Ipsum', NULL, 1),
+(7, 'Nagui', 'DELIQUAIRE', '', 0, 'Lorem Ipsum', NULL, 1),
+(8, 'Fleur', 'DEVELEY', '', 0, 'Lorem Ipsum', NULL, 1),
+(9, 'Anissa', 'EL HELALI', '', 0, 'Lorem Ipsum', NULL, 1),
+(10, 'Jeremy', 'FILIN ', '', 0, 'Lorem Ipsum', NULL, 1),
+(11, 'Emmanuel', 'GARCIA', '', 0, 'Lorem Ipsum', NULL, 1),
+(12, 'Corinne', 'HERVE ', '', 0, 'Lorem Ipsum', NULL, 1),
+(13, 'Ahmed', 'KARA ', '', 0, 'Lorem Ipsum', NULL, 1),
+(14, 'Franck', 'MARTINEZ', '', 0, 'Lorem Ipsum', NULL, 1),
+(15, 'Audrey', 'MEDICI', '', 0, 'Lorem Ipsum', NULL, 1),
+(16, 'Benjamin', 'MORIN', '', 0, 'Lorem Ipsum', NULL, 1),
+(17, 'Lorry', 'NADER ', '', 0, 'Lorem Ipsum', NULL, 1),
+(18, 'Nathalie', 'NOIRFALISE ', '', 0, 'Lorem Ipsum', NULL, 1),
+(19, 'Nadeje', 'THOMASSET ', '', 0, 'Lorem Ipsum', NULL, 1),
+(20, 'Axel', 'MINDEAU ABAD', '', 0, 'Lorem Ipsum', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -229,7 +259,14 @@ CREATE TABLE IF NOT EXISTS `typeformation` (
   `typeformation_programme` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `typeformation_competences` text COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`typeformation_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `typeformation`
+--
+
+INSERT INTO `typeformation` (`typeformation_id`, `typeformation_programme`, `typeformation_competences`) VALUES
+(1, 'DWWM', 'pleins');
 
 -- --------------------------------------------------------
 
@@ -246,7 +283,16 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `utilisateur_tel` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
   PRIMARY KEY (`utilisateur_id`),
   UNIQUE KEY `Utilisateur_mail` (`utilisateur_mail`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`utilisateur_id`, `utilisateur_mail`, `utilisateur_mdp`, `utilisateur_presentation`, `utilisateur_tel`) VALUES
+(1, 'test@gdf.fr', 'test', NULL, NULL),
+(2, 'contact@cci.com', 'mdp', NULL, NULL),
+(3, 'remi.lanney@cote-azur.cci.fr', 'trucmuche', NULL, NULL);
 
 --
 -- Contraintes pour les tables déchargées
