@@ -9,9 +9,16 @@
         <div class="login">
             
             <!-- Button trigger modal -->
-            <li><a href="" data-toggle="modal" data-target="#exampleModal"></li>
-            <img src="img/login.png" alt="login"></a>
-
+            <li>
+                <a href="" data-toggle="modal" data-target="#exampleModal">
+                    <img src="img/login.png" alt="login">
+                </a>
+            </li>
+            <li>
+                <a href="" data-toggle="modal" data-target="#loginModal">
+                    <img src="img/login.png" alt="login">
+                </a>
+            </li>
             <!--<a target="_blank" href="https://icones8.fr/icons/set/name">Nom icon</a> icon by <a target="_blank" href="https://icones8.fr">Icons8</a>-->
         </div>
         <div class="burger">

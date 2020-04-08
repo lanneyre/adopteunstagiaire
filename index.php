@@ -16,6 +16,7 @@
 
 <body>
     <?php include("include/modal.php");?>
+    <?php include("include/loginModal.php");?>
     <?php include("include/header.php"); ?>
 
     <section>

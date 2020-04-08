@@ -28,7 +28,7 @@
         }
         
         // je stocke ma requete dans une variable que je vais utiliser plus tard 
-        $sqlApprenants = "SELECT * FROM `stagiaire` WHERE `stagiaire_formation_id` = 1 ORDER BY `stagiaire_prenom` ASC LIMIT ".$offset.",".$nbCardPerPage.";";
+        $sqlApprenants = "SELECT * FROM `stagiaire` AS s JOIN `utilisateur` AS u ON (s.`stagiaire_utilisateur_id` = u.`utilisateur_id`) WHERE s.`stagiaire_formation_id` = 1 ORDER BY s.`stagiaire_prenom` ASC LIMIT ".$offset.",".$nbCardPerPage.";";
         // j'envoie la requete au serveur et je stocke son retour dans une autre variable
         $requeteApprenants = $db->query($sqlApprenants);
         // dans la variable $apprenants je vais stocker un tableau d'objet correspondant à ma requete
@@ -62,7 +62,7 @@
             <img src="img/<?php echo $apprenant->stagiaire_nom; ?>.png" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $apprenant->stagiaire_nom; ?> <?php echo $apprenant->stagiaire_prenom; ?></h5>
-                <p class="card-text"><?php echo $apprenant->stagiaire_preferences; ?></p>
+                <p class="card-text"><?php echo $apprenant->utilisateur_mail; ?></p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
