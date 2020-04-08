@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mer. 08 avr. 2020 à 07:23
+-- Généré le : mer. 08 avr. 2020 à 08:34
 -- Version du serveur :  10.5.1-MariaDB-log
 -- Version de PHP : 7.2.11
 
@@ -212,26 +212,26 @@ CREATE TABLE IF NOT EXISTS `stagiaire` (
 --
 
 INSERT INTO `stagiaire` (`stagiaire_id`, `stagiaire_nom`, `stagiaire_prenom`, `stagiaire_cv`, `stagiaire_statut`, `stagiaire_preferences`, `stagiaire_utilisateur_id`, `stagiaire_formation_id`) VALUES
-(1, 'Marie', 'BLANC', '', 0, 'Lorem Ipsum', NULL, 1),
-(2, 'Benedicte', 'BOUY', '', 0, 'Lorem Ipsum', NULL, 1),
-(3, 'Soumaya', 'CANCOIN', '', 0, 'Lorem Ipsum', NULL, 1),
-(4, 'Vincent', 'COCHET-HILGENBERG', '', 0, 'Lorem Ipsum', NULL, 1),
-(5, 'Sabrina', 'DAOUD', '', 0, 'Lorem Ipsum', NULL, 1),
-(6, 'Hugo', 'DEJEAN', '', 0, 'Lorem Ipsum', NULL, 1),
-(7, 'Nagui', 'DELIQUAIRE', '', 0, 'Lorem Ipsum', NULL, 1),
-(8, 'Fleur', 'DEVELEY', '', 0, 'Lorem Ipsum', NULL, 1),
-(9, 'Anissa', 'EL HELALI', '', 0, 'Lorem Ipsum', NULL, 1),
-(10, 'Jeremy', 'FILIN ', '', 0, 'Lorem Ipsum', NULL, 1),
-(11, 'Emmanuel', 'GARCIA', '', 0, 'Lorem Ipsum', NULL, 1),
-(12, 'Corinne', 'HERVE ', '', 0, 'Lorem Ipsum', NULL, 1),
-(13, 'Ahmed', 'KARA ', '', 0, 'Lorem Ipsum', NULL, 1),
-(14, 'Franck', 'MARTINEZ', '', 0, 'Lorem Ipsum', NULL, 1),
-(15, 'Audrey', 'MEDICI', '', 0, 'Lorem Ipsum', NULL, 1),
-(16, 'Benjamin', 'MORIN', '', 0, 'Lorem Ipsum', NULL, 1),
-(17, 'Lorry', 'NADER ', '', 0, 'Lorem Ipsum', NULL, 1),
-(18, 'Nathalie', 'NOIRFALISE ', '', 0, 'Lorem Ipsum', NULL, 1),
-(19, 'Nadeje', 'THOMASSET ', '', 0, 'Lorem Ipsum', NULL, 1),
-(20, 'Axel', 'MINDEAU ABAD', '', 0, 'Lorem Ipsum', NULL, 1);
+(1, 'Marie', 'BLANC', '', 0, 'Lorem Ipsum', 4, 1),
+(2, 'Benedicte', 'BOUY', '', 0, 'Lorem Ipsum', 5, 1),
+(3, 'Soumaya', 'CANCOIN', '', 0, 'Lorem Ipsum', 6, 1),
+(4, 'Vincent', 'COCHET-HILGENBERG', '', 0, 'Lorem Ipsum', 7, 1),
+(5, 'Sabrina', 'DAOUD', '', 0, 'Lorem Ipsum', 8, 1),
+(6, 'Hugo', 'DEJEAN', '', 0, 'Observateur', 9, 1),
+(7, 'Nagui', 'DELIQUAIRE', '', 0, 'Lorem Ipsum', 10, 1),
+(8, 'Fleur', 'DEVELEY', '', 0, 'Lorem Ipsum', 11, 1),
+(9, 'Anissa', 'EL HELALI', '', 0, 'Lorem Ipsum', 12, 1),
+(10, 'Jeremy', 'FILIN ', '', 0, 'Lorem Ipsum', 13, 1),
+(11, 'Emmanuel', 'GARCIA', '', 0, 'Lorem Ipsum', 14, 1),
+(12, 'Corinne', 'HERVE ', '', 0, 'Lorem Ipsum', 15, 1),
+(13, 'Ahmed', 'KARA ', '', 0, 'Lorem Ipsum', 16, 1),
+(14, 'Franck', 'MARTINEZ', '', 0, 'Lorem Ipsum', 17, 1),
+(15, 'Audrey', 'MEDICI', '', 0, 'Lorem Ipsum', 18, 1),
+(16, 'Benjamin', 'MORIN', '', 0, 'Lorem Ipsum', 19, 1),
+(17, 'Lorry', 'NADER ', '', 0, 'Lorem Ipsum', 20, 1),
+(18, 'Nathalie', 'NOIRFALISE ', '', 0, 'Lorem Ipsum', 21, 1),
+(19, 'Nadeje', 'THOMASSET ', '', 0, 'Lorem Ipsum', 22, 1),
+(20, 'Axel', 'MINDEAU ABAD', '', 0, 'Lorem Ipsum', 23, 1);
 
 -- --------------------------------------------------------
 
@@ -283,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `utilisateur_tel` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
   PRIMARY KEY (`utilisateur_id`),
   UNIQUE KEY `Utilisateur_mail` (`utilisateur_mail`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -292,7 +292,27 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 INSERT INTO `utilisateur` (`utilisateur_id`, `utilisateur_mail`, `utilisateur_mdp`, `utilisateur_presentation`, `utilisateur_tel`) VALUES
 (1, 'test@gdf.fr', 'test', NULL, NULL),
 (2, 'contact@cci.com', 'mdp', NULL, NULL),
-(3, 'remi.lanney@cote-azur.cci.fr', 'trucmuche', NULL, NULL);
+(3, 'remi.lanney@cote-azur.cci.fr', 'trucmuche', NULL, NULL),
+(4, 'm.blanc@ics-nice.com', 'm.blanc@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(5, 'b.bouy@ics-nice.com', 'b.bouy@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(6, 's.cancoin@ics-nice.com', 's.cancoin@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(7, 'v.cochet-hilgenberg@ics-nice.com', 'v.cochet-hilgenberg@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(8, 's.daoud@ics-nice.com', 's.daoud@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(9, 'h.dejean@ics-nice.com', 'h.dejean@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(10, 'n.deliquaire@ics-nice.com', 'n.deliquaire@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(11, 'f.develey@ics-nice.com', 'f.develey@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(12, 'a.el-helali@ics-nice.com', 'a.el-helali@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(13, 'j.filin-@ics-nice.com', 'j.filin-@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(14, 'e.garcia@ics-nice.com', 'e.garcia@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(15, 'c.herve-@ics-nice.com', 'c.herve-@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(16, 'a.kara-@ics-nice.com', 'a.kara-@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(17, 'f.martinez@ics-nice.com', 'f.martinez@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(18, 'a.medici@ics-nice.com', 'a.medici@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(19, 'b.morin@ics-nice.com', 'b.morin@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(20, 'l.nader-@ics-nice.com', 'l.nader-@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(21, 'n.noirfalise-@ics-nice.com', 'n.noirfalise-@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(22, 'n.thomasset-@ics-nice.com', 'n.thomasset-@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(23, 'a.mindeau-abad@ics-nice.com', 'a.mindeau-abad@ics-nice.com', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78');
 
 --
 -- Contraintes pour les tables déchargées
