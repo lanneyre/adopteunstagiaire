@@ -11,7 +11,7 @@
             <!-- Button trigger modal -->
             <li>
                 <a href="" data-toggle="modal" data-target="#exampleModal">
-                    <img src="img/login.png" alt="login">
+                    <img src="img/sinscrire.png" alt="S'inscrire">
                 </a>
             </li>
             <li>

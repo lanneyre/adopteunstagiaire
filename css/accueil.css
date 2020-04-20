@@ -68,6 +68,7 @@ header {
     list-style: none;
     margin-top: auto;
     margin-bottom: auto;
+    display: flex;
 }
 
 .nav_categorie {
