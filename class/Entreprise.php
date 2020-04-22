@@ -17,4 +17,8 @@ class Entreprise extends Utilisateur
 	// public function __set($attribut, $valeur){
 	// 	$this->$attribut = $valeur;
 	// }
+
+	public function updateData($data){
+		
+	}
 }

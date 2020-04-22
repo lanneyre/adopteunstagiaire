@@ -2,7 +2,7 @@
 /**
  * 
  */
-class Pratique
+abstract class Pratique
 {
 	public function __get($attribut){
 		return $this->$attribut;

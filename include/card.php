@@ -5,7 +5,12 @@
         // je vais le stocker das une variable afin de pouvoir m'adapter quelque soit le nb d'apprenants par promotion, le nb d'apprenants totals et de fait le nb d'apprenants à afficher
         $nbCardPerPage = 20;
 
-        $formation_id = 1;
+        if(!empty($_GET['f'])){
+            $formation_id = $_GET['f'];
+        } else {
+            $formation_id = 0;
+        }
+
         // J'appelle la méthode de class getAllStagiaire()
         $nbStagiaire = Stagiaire::getNbStagiaire($formation_id);
 
@@ -21,21 +26,20 @@
         // je calcul ici le point de départ pour ma requete SQL future
         $offset = ($p-1)*$nbCardPerPage; 
         // Si l'offset est supperieur aux nombres d'apprenants, alors je met l'offset à 0 afin d'éviter la page blanche sans apprenant
-        if($offset > $nbStagiaire){
+        if($offset >= $nbStagiaire){
             $offset = 0;
         }
-        
 
         // Je récupère l'ensemble des stagiaires qui m'intéresse en faisant appel à la méthode de class (static) getAllStagiaire 
         // on dit que c'est une méthode de class et pas une méthode d'objet car elle n'est pas spécifique à un objet mais à l'ensemble des instances de ces class
         $apprenants = Stagiaire::getAllStagiaire($formation_id, $offset, $nbCardPerPage);
-        
+
         // $apprenants avec un s contient la totalité des résultats tandis que $apprenant sans s, lui ne contient qu'un seul résultat, une seule ligne de la bdd 
 
         // Je vais générer les boutons mais de combien en ai-je besoin ?
         // autant que de page or le nb de page = au nombre toal d'apprenants divisé par le nombre d'apprenants qu'on veux sur une page le tout arrondi à l'unité supérieure
         $nbPage = ceil($nbStagiaire/$nbCardPerPage);
-        if($nbPage > 1) {
+        if($nbPage > 1 && $formation_id != 0) {
 ?>
     <div class="col-12">
         <?php
@@ -46,7 +50,7 @@
             # code...
             // Je génère donc un lien avec un numéro de page en variable dans l'url
             ?>
-        <a href="index.php?p=<?php echo $i;?>#cardApprenants" class="btn btn-outline-secondary" role="button" aria-pressed="true"><?php echo $i;?></a>
+        <a href="index.php?f=<?php echo $formation_id; ?>&p=<?php echo $i;?>#cardApprenants" class="btn btn-outline-secondary" role="button" aria-pressed="true"><?php echo $i;?></a>
             <?php
         }
         ?>
@@ -59,7 +63,7 @@
             // pour récupérer les apprenants j'ai opté pour PDO::FETCH_OBJ donc je vais avoir un objet dans $apprenant d'où les -> pour appeler les champs de la table
             ?>
         <div class="card">
-            <img src="img/<?php echo $apprenant->stagiaire_nom; ?>.png" class="card-img-top" alt="...">
+            <img src="img/<?php echo $apprenant->stagiaire_prenom; ?>.png" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $apprenant->stagiaire_nom; ?> <?php echo $apprenant->stagiaire_prenom; ?></h5>
                 <p class="card-text"><?php echo $apprenant->utilisateur_mail; ?></p>
