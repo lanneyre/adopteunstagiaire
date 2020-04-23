@@ -17,6 +17,7 @@
 <body>
     <?php include("include/modal.php");?>
     <?php include("include/loginModal.php");?>
+    <?php include("include/editUserModal.php");?>
     <?php include("include/header.php"); ?>
 
     <section>
@@ -26,6 +27,16 @@
             </div>
             <div class="contentRight">
                 <h3>Voici notre centre de formation</h3>
+                
+                <?php 
+                // [mode debug] permet d'afficher le contenu de la session si elle existe
+                // if(isset($_SESSION['user'])){
+                //     echo "<pre>";
+                //     var_dump($_SESSION);
+                //     echo "</pre>";
+                // }
+                ?>
+
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae,
                     sapiente? Excepturi nemo fugiat voluptate blanditiis qui incidunt praesentium obcaecati
                     illum cumque at, consectetur aperiam beatae consequuntur veniam vitae ab officia?

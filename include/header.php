@@ -15,7 +15,15 @@
                 </a>
             </li>
             <li>
-                <a href="" data-toggle="modal" data-target="#loginModal">
+                <!-- editUserModal -->
+                <?php 
+                if(!empty($_SESSION['user'])){
+                    $dataTarget = "editUserModal";
+                } else {
+                    $dataTarget = "loginModal";
+                }
+                ?>
+                <a href="" data-toggle="modal" data-target="#<?php echo $dataTarget; ?>">
                     <img src="img/login.png" alt="login">
                 </a>
             </li>
