@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mer. 08 avr. 2020 à 10:16
+-- Généré le : jeu. 23 avr. 2020 à 10:57
 -- Version du serveur :  10.5.1-MariaDB-log
 -- Version de PHP : 7.2.11
 
@@ -67,6 +67,18 @@ CREATE TABLE IF NOT EXISTS `dispenser` (
   KEY `dispenser_formation_id` (`formation_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `dispenser`
+--
+
+INSERT INTO `dispenser` (`formateur_id`, `formation_id`) VALUES
+(1, 1),
+(2, 5),
+(2, 6),
+(3, 3),
+(4, 2),
+(5, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -109,14 +121,18 @@ CREATE TABLE IF NOT EXISTS `formateur` (
   `formateur_utilisateur_id` int(11) NOT NULL,
   PRIMARY KEY (`formateur_id`),
   KEY `formateur_utilisateur_id` (`formateur_utilisateur_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `formateur`
 --
 
 INSERT INTO `formateur` (`formateur_id`, `formateur_nom`, `formateur_prenom`, `formateur_utilisateur_id`) VALUES
-(1, 'LANNEY', 'Rémi', 3);
+(1, 'LANNEY', 'Rémi', 3),
+(2, 'ENRICI', 'Cyril', 24),
+(3, 'Debrun', 'Maxime', 26),
+(4, 'ALLIO', 'Jacques', 25),
+(5, 'AMSELEM', 'Jonathan', 27);
 
 -- --------------------------------------------------------
 
@@ -133,14 +149,19 @@ CREATE TABLE IF NOT EXISTS `formation` (
   `formation_typeformation_id` int(11) NOT NULL,
   PRIMARY KEY (`formation_id`),
   KEY `formation_typeformation_id` (`formation_typeformation_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `formation`
 --
 
 INSERT INTO `formation` (`formation_id`, `formation_nom`, `formation_dateDebut`, `formation_dateFin`, `formation_typeformation_id`) VALUES
-(1, 'DWWM2', '2020-04-07 14:57:07', '2020-04-07 14:57:07', 1);
+(1, 'DWWM2', '2020-04-07 14:57:07', '2020-04-07 14:57:07', 1),
+(2, 'TAI 1', '2019-12-09 08:30:00', '2020-07-17 16:30:00', 2),
+(3, 'TAI 2', '2020-03-23 08:30:00', '2020-09-18 16:30:00', 2),
+(4, 'CDA 1', '2019-11-18 08:30:00', '2020-11-13 16:30:00', 6),
+(5, 'java1', '2020-04-21 12:18:17', '2020-04-21 12:18:17', 3),
+(6, 'PHP1', '2020-04-21 12:18:17', '2020-04-21 12:18:17', 4);
 
 -- --------------------------------------------------------
 
@@ -195,8 +216,8 @@ CREATE TABLE IF NOT EXISTS `stage` (
 DROP TABLE IF EXISTS `stagiaire`;
 CREATE TABLE IF NOT EXISTS `stagiaire` (
   `stagiaire_id` int(11) NOT NULL AUTO_INCREMENT,
-  `stagiaire_nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `stagiaire_prenom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `stagiaire_nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `stagiaire_cv` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `stagiaire_statut` tinyint(4) NOT NULL,
   `stagiaire_preferences` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -205,13 +226,13 @@ CREATE TABLE IF NOT EXISTS `stagiaire` (
   PRIMARY KEY (`stagiaire_id`),
   KEY `stagiaire_utilisateur_id` (`stagiaire_utilisateur_id`),
   KEY `stagiaire_formation_id` (`stagiaire_formation_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `stagiaire`
 --
 
-INSERT INTO `stagiaire` (`stagiaire_id`, `stagiaire_nom`, `stagiaire_prenom`, `stagiaire_cv`, `stagiaire_statut`, `stagiaire_preferences`, `stagiaire_utilisateur_id`, `stagiaire_formation_id`) VALUES
+INSERT INTO `stagiaire` (`stagiaire_id`, `stagiaire_prenom`, `stagiaire_nom`, `stagiaire_cv`, `stagiaire_statut`, `stagiaire_preferences`, `stagiaire_utilisateur_id`, `stagiaire_formation_id`) VALUES
 (1, 'Marie', 'BLANC', '', 0, 'Lorem Ipsum', 4, 1),
 (2, 'Benedicte', 'BOUY', '', 0, 'Lorem Ipsum', 5, 1),
 (3, 'Soumaya', 'CANCOIN', '', 0, 'Lorem Ipsum', 6, 1),
@@ -259,14 +280,19 @@ CREATE TABLE IF NOT EXISTS `typeformation` (
   `typeformation_programme` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `typeformation_competences` text COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`typeformation_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `typeformation`
 --
 
 INSERT INTO `typeformation` (`typeformation_id`, `typeformation_programme`, `typeformation_competences`) VALUES
-(1, 'DWWM', 'pleins');
+(1, 'DWWM', 'pleins'),
+(2, 'TAI', 'Pleins'),
+(3, 'Dev Java', 'Oui'),
+(4, 'Dev PHP/Mysql', 'Oui'),
+(5, 'TSSR', 'OUI'),
+(6, 'CDA', 'Pleins');
 
 -- --------------------------------------------------------
 
@@ -283,16 +309,16 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `utilisateur_tel` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
   PRIMARY KEY (`utilisateur_id`),
   UNIQUE KEY `Utilisateur_mail` (`utilisateur_mail`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`utilisateur_id`, `utilisateur_mail`, `utilisateur_mdp`, `utilisateur_presentation`, `utilisateur_tel`) VALUES
-(1, 'test@gdf.fr', '$2y$10$y/2CJeZ.qLPhkYCl6Gqc.uAlQoPtf9OKmR/h/1kFMsiPHJNrJ2WLa', NULL, NULL),
-(2, 'contact@cci.com', '$2y$10$AxjMK9lU8.Mde0rs699Mq.Rd1F0/qIFX0JUjMMsgNbO3GD/WXqFki', NULL, NULL),
-(3, 'remi.lanney@cote-azur.cci.fr', '$2y$10$4YLh7qj8xNO6y7C4BQ3QF.Z9mmlOIBMX9eFS/VfkUdoao52WGthw2', NULL, NULL),
+(1, 'test@gdf.fr', '$2y$10$pHtlFt4I3UnsF01IYsj/sOVIsnjsWQA7456CLIge0gnyBnbhLHlxS', NULL, NULL),
+(2, 'contact@cci.com', '$2y$10$pHtlFt4I3UnsF01IYsj/sOVIsnjsWQA7456CLIge0gnyBnbhLHlxS', NULL, NULL),
+(3, 'remi.lanney@cote-azur.cci.fr', '$2y$10$9DTxVdA4zY9GD1Gymf8P.uWEeYlCVCYBLNsnX9MjDtKG7goolOJg2', NULL, NULL),
 (4, 'm.blanc@ics-nice.com', '$2y$10$.escNzunJ4GSbmNMt7eOKen17EBPQBCR53b055iISqb8LucMqT//m', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
 (5, 'b.bouy@ics-nice.com', '$2y$10$gY.npCWcqpAvnsC2ANcTEurdVSopqeGJ8i0tbIePulrFgP82PxGum', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
 (6, 's.cancoin@ics-nice.com', '$2y$10$zJtC9ktqk32Wmxf53VWhK.c4VBWKnwXySKJr61hOr.Gsv6CX8iG4e', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
@@ -312,7 +338,11 @@ INSERT INTO `utilisateur` (`utilisateur_id`, `utilisateur_mail`, `utilisateur_md
 (20, 'l.nader-@ics-nice.com', '$2y$10$qZgY4R4CYSdhBondN6kRX.UOfhBu4lrzM2JZuC.f7nCJ6JwJuPhqC', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
 (21, 'n.noirfalise-@ics-nice.com', '$2y$10$GJ/EBYoMojR3vr8tRbpsqeKUpt67XJ/8LSZbEQozOVF.VIAaH92rG', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
 (22, 'n.thomasset-@ics-nice.com', '$2y$10$v87ki9l.2nVF5EXlF4h3z.9EZUquulVaWxs1qyliosA5zj1dhoW9K', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
-(23, 'a.mindeau-abad@ics-nice.com', '$2y$10$aPQE4nsZ.nLagpxCDOdl5uKb6YV/Sij5szIT14NjRuqF9CsnG6F9S', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78');
+(23, 'a.mindeau-abad@ics-nice.com', '$2y$10$aPQE4nsZ.nLagpxCDOdl5uKb6YV/Sij5szIT14NjRuqF9CsnG6F9S', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eius deleniti sit obcaecati, porro doloremque voluptatum a qui saepe consequatur! Optio rem quis unde laudantium laborum enim dolorum corporis architecto.', '06 21 34 59 78'),
+(24, 'cyril.enrici@cote-azur.cci.fr', 'oui', NULL, NULL),
+(25, 'jacques.allio@cote-azur.cci.fr', 'oui', NULL, NULL),
+(26, 'maxime.debrun@cote-azur.cci.fr', 'oui', NULL, NULL),
+(27, 'jonathan.amselem@cote-azur.cci.fr', 'oui', NULL, NULL);
 
 --
 -- Contraintes pour les tables déchargées
