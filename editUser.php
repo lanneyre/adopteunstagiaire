@@ -135,6 +135,7 @@
     	$prepareUpdateAdmin = $db->prepare($reqSQLupdateAdmin);
     	$prepareUpdateEntreprise = $db->prepare($reqSQLupdateEntreprise);
     	$prepareUpdateFormateur = $db->prepare($reqSQLupdateFormateur);
+    	
     	echo $reqSQLupdateUser;
 
 
