@@ -87,34 +87,57 @@
     if(sizeof($modif)>0){
     	$reqSQLupdateUser = "UPDATE `utilisateur` SET ";
     	$reqSQLupdateStagiaire = "UPDATE `stagiaire` SET ";	
+    	$reqSQLupdateAdmin = "UPDATE `admin` SET ";
+    	$reqSQLupdateEntreprise = "UPDATE `entreprise` SET ";	
+    	$reqSQLupdateFormateur = "UPDATE `formateur` SET ";
+
+    	$modifUser = [];
+    	$modifStagiaire = [];
+    	$modifAdmin = [];
+    	$modifEntreprise = [];
+    	$modifFormateur = [];
 
     	foreach ($modif as $m) {
     		# code...
     		switch ($m["table"]) {
     			case 'admin':
     				# code...
+    				$modifAdmin[] = $m["requete"];
     				break;
     			case 'entreprise':
     				# code...
+    				$modifEntreprise[] = $m["requete"];
     				break;
     			case 'formateur':
     				# code...
+    				$modifFormateur[] = $m["requete"];
     				break;
     			case 'stagiaire':
     				# code...
-    				$reqSQLupdateStagiaire .= $m["requete"].", ";
+    				$modifStagiaire[] = $m["requete"];
     				break;
     			default:
     				# code...
-    				$reqSQLupdateUser .= $m["requete"].", ";
+    				$modifUser[] = $m["requete"];
     				break;
     		}
     	}
 
-    	$reqSQLupdateUser = "WHERE `utilisateur_id` = :utilisateur_id";
-    	$reqSQLupdateStagiaire = "WHERE `stagiaire_id` = :stagiaire_id";	
 
-    	// a ce stade les requêtes sql sont mal formées
+    	$reqSQLupdateUser .= implode(", ", $modifUser)." WHERE `utilisateur_id` = :utilisateur_id;";
+    	$reqSQLupdateStagiaire .= implode(", ", $modifStagiaire)." WHERE `stagiaire_id` = :stagiaire_id;";
+    	$reqSQLupdateAdmin .= implode(", ", $modifAdmin)." WHERE `admin_id` = :admin_id;";
+    	$reqSQLupdateEntreprise .= implode(", ", $modifEntreprise)." WHERE `entreprise_id` = :entreprise_id;";
+    	$reqSQLupdateFormateur .= implode(", ", $modifFormateur)." WHERE `formateur_id` = :formateur_id;";
+
+    	$prepareUpdateUser = $db->prepare($reqSQLupdateUser);
+    	$prepareUpdateStagiaire = $db->prepare($reqSQLupdateStagiaire);
+    	$prepareUpdateAdmin = $db->prepare($reqSQLupdateAdmin);
+    	$prepareUpdateEntreprise = $db->prepare($reqSQLupdateEntreprise);
+    	$prepareUpdateFormateur = $db->prepare($reqSQLupdateFormateur);
+    	echo $reqSQLupdateUser;
+
+
     }
 
     //affiche($modif);
