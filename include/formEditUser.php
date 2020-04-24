@@ -1,16 +1,24 @@
 
 <form class="formModal" method="POST" action="editUser.php">
 
-  <input type="hidden" name="utilisateur_id" id="editUser_utilisateur_id" value="">
+  <input type="hidden" name="utilisateur_id" id="editUser_utilisateur_id" value="<?php echo $_SESSION['user']->utilisateur_id; ?>">
   <div class="form-group form-group-modal">
     <label for="editUser_utilisateur_mail">Email</label>
     <input type="email" class="form-control" id="editUser_utilisateur_mail" name="utilisateur_mail" required="" value="<?php echo $_SESSION['user']->utilisateur_mail; ?>">
   </div>
+  <?php echo "<hr>"; ?>
   <div class="form-group form-group-modal">
     <label for="editUser_utilisateur_mdp">Mot de passe</label>
     <!-- Afficher le mot de passe est inutile puisque d'une part il est crypté dans la BDD et de l'autre il affichera des ronds dans le navigateur -->
     <input type="password" class="form-control" id="editUser_utilisateur_mdp" name="utilisateur_mdp" value="">
   </div>
+
+  <div class="form-group form-group-modal">
+    <label for="editUser_utilisateur_mdp2">Retapez le mot de passe</label>
+    <!-- Afficher le mot de passe est inutile puisque d'une part il est crypté dans la BDD et de l'autre il affichera des ronds dans le navigateur -->
+    <input type="password" class="form-control" id="editUser_utilisateur_mdp2" name="utilisateur_mdp2" value="">
+  </div>
+  <?php echo "Laissez vide les champs si vous ne voulez pas changer de mot de passe<hr>"; ?>
 
   <div class="form-group form-group-modal">
     <label for="editUser_utilisateur_presentation">Présentation</label>
@@ -52,6 +60,6 @@
 
   <div class="form-group form-group-modal">
     <br>
-    <button type="submit" class="btn btn-primary btn-modal">Envoyer</button>
+    <button type="submit" class="btn btn-primary btn-modal">Mettre à jour</button>
   </div>
 </form>

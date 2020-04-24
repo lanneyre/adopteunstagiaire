@@ -15,5 +15,9 @@ try{
 	$messageError = $exception->getMessage();
 }
 
-
+function affiche($var){
+	echo "<pre>";
+	var_dump($var);
+	echo "</pre>";
+}
 

@@ -24,8 +24,8 @@
         <label class="input-group-text" for="editUser_stagiaire_statut">Statut</label>
       </div>
       <select name="stagiaire_statut" id="editUser_stagiaire_statut" class="custom-select">
-        <option value="0">En recherche</option>
-        <option value="1">Adopté</option>
+        <option value="0" <?php if($stagiaire->stagiaire_statut == 0){ echo 'selected=""';} ?>>En recherche</option>
+        <option value="1" <?php if($stagiaire->stagiaire_statut == 1){ echo 'selected=""';} ?>>Adopté</option>
       </select>
     </div>
   </div>

@@ -33,11 +33,11 @@ if(isset($_POST['send'])){
 			exit;
 			//echo "Le mail n'est pas enregistré dans la bdd";
 		} else {
-			function randomPassword() {
-			    $alphabet = 'abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789@=!?.$%*-+';
+			function randomPassword($nbcarac = 15) {
+			    $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#=!?.$%*-+';
 			    $pass = array(); //remember to declare $pass as an array
 			    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-			    for ($i = 0; $i < 15; $i++) {
+			    for ($i = 0; $i < $nbcarac; $i++) {
 			        $n = rand(0, $alphaLength);
 			        $pass[] = $alphabet[$n];
 			    }
@@ -46,9 +46,11 @@ if(isset($_POST['send'])){
 
 			$utilisateur = $reqprepare->fetch(PDO::FETCH_OBJ);
 
+			// je prépare la requete de modif dans la bdd
 			$sqlUPDATE = "UPDATE `utilisateur` SET `utilisateur_mdp` = :utilisateur_mdp WHERE `utilisateur_id` = :utilisateur_id;";
 			$reqprepare = $db->prepare($sqlUPDATE);
 
+			// genération du mdp
 			$newmdp = randomPassword();
 			$newmdpHash	= password_hash($newmdp, PASSWORD_DEFAULT);
 
