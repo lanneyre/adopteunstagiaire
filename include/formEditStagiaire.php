@@ -4,6 +4,7 @@
   // <?php echo $stagiaire->stagiaire_prenom; 
   // mais j'aurais pu aussi ecrire <?php echo $_SESSION['stagiaire']->stagiaire_prenom;
 ?>
+<input type="hidden" name="stagiaire_id" id="stagiaire_id" value="<?php echo $stagiaire->stagiaire_id; ?>">
   <div class="form-group form-group-modal">
     <label for="editUser_stagiaire_prenom">Prénom</label>
     <input type="text" class="form-control" id="editUser_stagiaire_prenom" name="stagiaire_prenom" value="<?php echo $stagiaire->stagiaire_prenom; ?>">

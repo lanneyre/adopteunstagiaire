@@ -1,5 +1,5 @@
 
-<form class="formModal" method="POST" action="editUser.php">
+<form class="formModal" method="POST" action="editUserV2.php">
 
   <input type="hidden" name="utilisateur_id" id="editUser_utilisateur_id" value="<?php echo $_SESSION['user']->utilisateur_id; ?>">
   <div class="form-group form-group-modal">
