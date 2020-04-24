@@ -87,6 +87,20 @@
 	switch ($_SESSION['userType']) {
 		case 'admin':
 			# code...
+			$reqSqlAdmin = "UPDATE `admin` SET `admin_role` = :admin_role WHERE `admin`.`admin_id` = :admin_id;";
+			$reqprepareAdmin = $db->prepare($reqSqlAdmin);
+			$reqprepareAdmin->bindValue(":admin_role", $_POST['admin_role']);
+			$reqprepareAdmin->bindValue(":admin_id", $_POST['admin_id']);
+			if(!$reqprepareAdmin->execute()){
+				$toutCePasseBien = false;
+			}  else {
+				$sql = "SELECT * FROM `admin` WHERE `admin_id` = :admin_id";
+				$req = $db->prepare($sql);
+				$req->bindValue(":admin_id", $_POST['admin_id']);
+				$req->execute();
+
+				$_SESSION['admin'] = $req->fetch(PDO::FETCH_OBJ);
+			}
 			break;
 		case 'formateur':
 			# code...
@@ -108,6 +122,25 @@
 			break;
 		case 'entreprise':
 			# code...
+			$reqSQLEntreprise = "UPDATE `entreprise` SET `entreprise_raisonSociale` = :entreprise_raisonSociale, `entreprise_adresse` = :entreprise_adresse, `entreprise_cp` = :entreprise_cp, `entreprise_ville` = :entreprise_ville, `entreprise_siret` = :entreprise_siret, `entreprise_caracteristiques` = :entreprise_caracteristiques WHERE `entreprise`.`entreprise_id` = :entreprise_id; ";
+			$reqprepareEntreprise = $db->prepare($reqSQLEntreprise);
+			$reqprepareEntreprise->bindValue(":entreprise_raisonSociale", $_POST['entreprise_raisonSociale']);
+			$reqprepareEntreprise->bindValue(":entreprise_adresse", $_POST['entreprise_adresse']);
+			$reqprepareEntreprise->bindValue(":entreprise_cp", $_POST['entreprise_cp']);
+			$reqprepareEntreprise->bindValue(":entreprise_ville", $_POST['entreprise_ville']);
+			$reqprepareEntreprise->bindValue(":entreprise_siret", $_POST['entreprise_siret']);
+			$reqprepareEntreprise->bindValue(":entreprise_caracteristiques", $_POST['entreprise_caracteristiques']);
+			$reqprepareEntreprise->bindValue(":entreprise_id", $_POST['entreprise_id']);
+			if(!$reqprepareEntreprise->execute()){
+				$toutCePasseBien = false;
+			} else {
+				$sql = "SELECT * FROM `entreprise` WHERE `entreprise_id` = :entreprise_id";
+				$req = $db->prepare($sql);
+				$req->bindValue(":entreprise_id", $_POST['entreprise_id']);
+				$req->execute();
+
+				$_SESSION['entreprise'] = $req->fetch(PDO::FETCH_OBJ);
+			}
 			break;
 		default:
 			# code...
