@@ -30,6 +30,33 @@
 	}
 	*/
 
+	/**************************************************************/
+	// gestion de l'edition des mot de passe.
+
+	if(!empty($_POST['utilisateur_mdp']) && !empty($_POST['utilisateur_mdp2']) && $_POST['utilisateur_mdp2'] != $_POST['utilisateur_mdp']){
+		$error[] = "utilisateurMdpsIncoherents";
+	}
+	if(!empty($_POST['utilisateur_mdp']) && empty($_POST['utilisateur_mdp2'])){
+		$error[] = "utilisateurMdp2Obligatoire";
+	}
+	if(empty($_POST['utilisateur_mdp']) && !empty($_POST['utilisateur_mdp2'])){
+		$error[] = "utilisateurMdp1Obligatoire";
+	}
+
+	if(!empty($_POST['utilisateur_mdp']) && !empty($_POST['utilisateur_mdp2']) && $_POST['utilisateur_mdp2'] == $_POST['utilisateur_mdp'] && sizeof($error) == 0){
+		
+		$newmdpHash = password_hash($_POST['utilisateur_mdp'], PASSWORD_DEFAULT);
+
+		// je prépare la requete de modif dans la bdd
+		$sqlUPDATE = "UPDATE `utilisateur` SET `utilisateur_mdp` = :utilisateur_mdp WHERE `utilisateur_id` = :utilisateur_id;";
+		$reqprepare = $db->prepare($sqlUPDATE);
+
+		$reqprepare->bindValue(":utilisateur_id", $_POST['utilisateur_id']);
+		$reqprepare->bindValue(":utilisateur_mdp", $newmdpHash);
+		$reqprepare->execute();
+	}
+	/**************************************************************/
+
 	// je teste les différents champs de formulaire en fonction du type d'utilisateur
 	// En fonction du type de l'utilisateur je récupère les informations de l'utilisateur contenu dans 2 tables différentes en fonction du type d'utilisateur
     switch ($_SESSION['userType']) {
