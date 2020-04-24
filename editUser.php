@@ -41,12 +41,25 @@
         break;
       case 'entreprise':
         # code...
-        //$include = "formEditEntreprise.php";
+        if(empty($_POST['entreprise_raisonSociale'])){
+			$error[] = "entrepriseRaisonSocialeVide";
+		}
+		if(empty($_POST['entreprise_siret'])){
+			$error[] = "entrepriseSiretVide";
+		}
+		if(empty($_POST['entreprise_ville'])){
+			$error[] = "entrepriseVilleVide";
+		}
       	$reqSql = "SELECT * FROM `utilisateur` AS u JOIN `entreprise` AS e ON (u.`utilisateur_id` = e.`entreprise_utilisateur_id`) WHERE u.`utilisateur_id` = :utilisateur_id;";
         break;
       case 'formateur':
         # code...
-        //$include = "formEditFormateur.php";
+        if(empty($_POST['formateur_prenom'])){
+			$error[] = "formateurPrenomVide";
+		}
+		if(empty($_POST['formateur_nom'])){
+			$error[] = "formateurNomVide";
+		}
       	$reqSql = "SELECT * FROM `utilisateur` AS u JOIN `formateur` AS f ON (u.`utilisateur_id` = f.`formateur_utilisateur_id`) WHERE u.`utilisateur_id` = :utilisateur_id;";
         break;
       default:

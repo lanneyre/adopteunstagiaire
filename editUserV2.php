@@ -39,11 +39,24 @@
         break;
       case 'entreprise':
         # code...
-        //$include = "formEditEntreprise.php";
+        if(empty($_POST['entreprise_raisonSociale'])){
+			$error[] = "entrepriseRaisonSocialeVide";
+		}
+		if(empty($_POST['entreprise_siret'])){
+			$error[] = "entrepriseSiretVide";
+		}
+		if(empty($_POST['entreprise_ville'])){
+			$error[] = "entrepriseVilleVide";
+		}
         break;
       case 'formateur':
         # code...
-        //$include = "formEditFormateur.php";
+        if(empty($_POST['formateur_prenom'])){
+			$error[] = "formateurPrenomVide";
+		}
+		if(empty($_POST['formateur_nom'])){
+			$error[] = "formateurNomVide";
+		}
         break;
       default:
         # code...
